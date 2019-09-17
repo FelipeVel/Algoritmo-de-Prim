@@ -11,15 +11,25 @@ class Grafo:
         self.mAdyacencia = mAdyacencia
         self.marcados=list
         self.costos=list
+        self.padres=list
         self.vActual=0
         for i in range(len(mAdyacencia)):
             self.marcados.append(0)
             self.costos.append(99)
+            self.padres.append(0)
     
     def Prim (self):
-        menorCosto=99
+        self.marcados[self.vActual]=1
+        self.costos[self.menorCosto(self.vActual)]=self.mAdyacencia[self.vActual][self.menorCosto(self.vActual)]
+        
+        return 0
+        
+    #Buscar el menor costo de un vertice con sus adyacentes
+    def menorCosto(self, vertice):
+        menor=99
         for i in range(len(self.mAdyacencia)):
-            if self.mAdyacencia[self.vActual][i]>0 and self.mAdyacencia[self.vActual][i]<menorCosto:
-                self.vActual=i
-                menorCosto=self.mAdyacencia[self.vActual][i]
-        self.costos[self.vActual]=menorCosto
+            if self.mAdyacencia[vertice][i]>0 and self.mAdyacencia[vertice][i]<menor:
+                menor=i
+        return menor
+    
+    
